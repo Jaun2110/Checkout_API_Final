@@ -1,0 +1,89 @@
+@Checkout_API_Final_HostAddress = http://localhost:5050
+
+@username=string
+POST {{Checkout_API_Final_HostAddress}}/api/users?username={{username}}
+
+###
+
+@id=0
+DELETE {{Checkout_API_Final_HostAddress}}/api/users/{{id}}
+
+###
+
+GET {{Checkout_API_Final_HostAddress}}/api/users
+
+
+
+
+###
+
+GET {{Checkout_API_Final_HostAddress}}/api/products
+
+###
+
+POST {{Checkout_API_Final_HostAddress}}/api/products
+apiKey:b44b7c1b-517e-41eb-81ad-9417ce7989db
+Content-Type: application/json
+
+{
+ "name": "Notebook",
+    "price": 59.99,
+    "quantity": 10
+}
+
+###
+
+GET {{Checkout_API_Final_HostAddress}}/api/products
+
+###
+@id =2
+PUT {{Checkout_API_Final_HostAddress}}/api/products?id={{id}}
+Content-Type: application/json
+apiKey:b44b7c1b-517e-41eb-81ad-9417ce7989db
+
+{
+"id": 2,
+    "name": "Notebook",
+    "price": 48.99,
+    "quantity": 10,
+    "userId": 3,
+    "user": {
+      "id": 3,
+      "username": "jaunn",
+      "apiKey": "b44b7c1b-517e-41eb-81ad-9417ce7989db"
+    }
+}
+
+###
+@id=2
+DELETE {{Checkout_API_Final_HostAddress}}/api/products/{{id}}
+apiKey:b44b7c1b-517e-41eb-81ad-9417ce7989db
+
+###
+
+POST {{Checkout_API_Final_HostAddress}}/api/checkout/start
+Content-Type: application/json
+apiKey:b44b7c1b-517e-41eb-81ad-9417ce7989db
+
+[
+    {
+"productId": 1,
+"quantity": 1
+}
+]
+
+###
+
+PUT {{Checkout_API_Final_HostAddress}}/api/users/{{id}}
+Content-Type: application/json
+
+{
+  //User
+}
+
+###
+
+POST {{Checkout_API_Final_HostAddress}}/api/checkout/complete
+apiKey:b44b7c1b-517e-41eb-81ad-9417ce7989db
+
+###
