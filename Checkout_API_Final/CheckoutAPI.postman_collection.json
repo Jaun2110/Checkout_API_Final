@@ -1,0 +1,255 @@
+{
+  "info": {
+    "name": "Checkout API",
+    "_postman_id": "12345678-abcd-efgh-ijkl-1234567890ab",
+    "description": "A Postman collection to test the Checkout API endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create User",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/users?username=jaunn",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users"
+          ],
+          "query": [
+            {
+              "key": "username",
+              "value": "jaunn"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Add Product",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "apiKey",
+            "value": "{{apiKey}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"name\": \"Notebook\", \"price\": 59.99, \"quantity\": 10 }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/products",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "products"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get All Products",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/products",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "products"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Update Product",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "apiKey",
+            "value": "{{apiKey}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"name\": \"Updated Notebook\", \"price\": 49.99, \"quantity\": 20 }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/products/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "products",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Delete Product",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "apiKey",
+            "value": "{{apiKey}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/products/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "products",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Start Checkout",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "apiKey",
+            "value": "{{apiKey}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "[{ \"productId\": 1, \"quantity\": 1 }]",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/checkout/start",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "checkout",
+            "start"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Update Checkout Item Quantity",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "apiKey",
+            "value": "{{apiKey}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"productId\": 1, \"quantity\": 2 }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/checkout/update-item",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "checkout",
+            "update-item"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Remove Checkout Item",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "apiKey",
+            "value": "{{apiKey}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/checkout/remove-item/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "checkout",
+            "remove-item",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Complete Checkout",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "apiKey",
+            "value": "{{apiKey}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/checkout/complete",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "checkout",
+            "complete"
+          ]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5050/api"
+    },
+    {
+      "key": "apiKey",
+      "value": ""
+    }
+  ]
+}
