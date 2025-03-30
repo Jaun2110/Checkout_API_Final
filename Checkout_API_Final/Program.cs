@@ -19,10 +19,11 @@ builder.WebHost.UseUrls($"http://*:{port}");
 var app = builder.Build();
 
 // 🔧 Environment-specific config
+app.UseSwagger();
+app.UseSwaggerUI();
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    
     app.UseHttpsRedirection(); 
 }
 
