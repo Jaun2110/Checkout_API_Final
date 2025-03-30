@@ -18,6 +18,13 @@ builder.WebHost.UseUrls($"http://*:{port}");
 
 var app = builder.Build();
 
+// Create DB + Tables on startup
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.Database.EnsureCreated();
+}
+
 // 🔧 Environment-specific config
 app.UseSwagger();
 app.UseSwaggerUI();
